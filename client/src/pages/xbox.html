@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../index.css" />
+  </head>
+  <body>
+    <nav
+      id="mobile-navbar"
+      class="bg-white md:hidden w-full h-12 flex justify-between items-center"
+    >
+      <div class="flex gap-6 ml-6">
+        <img
+          id="hamburgerMenu"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAPElEQVR4nO3WsQkAMAwDQe2/dALuXIVUBnMHGkDdJwBAOUuWNUcAAOBpulplfGQ8AAC/pvNbxkfGA0CaC2n/KuSsP4fKAAAAAElFTkSuQmCC"
+          class="w-6"
+          alt="menu--v1"
+        />
+        <img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACjUlEQVR4nO2YTYiNYRTHf8JN49uSkiQfYywkKQsWSIoZOxYyO0kpSUYhC0kuKx8bHzspTc3G4mKaxsJCk6TJDPnYXWqmfBRC1xg99ajT6b133Jlz7n3v9P7q2dze+/+/532e5zznOZCRkZEWpgHLgC3ALmArsA6YTQMwHzgEdAPfgdGE8QfoB/LAGlJGE9ABfCnz8pVGd1oC2gF8qPCiH4FBoAiUyjxTAi7F5VgXjgK/1UsNAVfinpihnp8CrAKOA30JAT2My7Om5NVLfAXOALOq0NgJvFA6g7UMpl2Zv4lfejzkgFsJ+8Z9ma0HfgnTJ0Zf8KQK5iLOPBZm74FFhtrXhXbYe804sVudBxuN9XPAgPDowolnwqTTyaNVLbEWa4MWZbAaP54KnwvW4seEeEiZnnQIr+fW4p1C/Dy+NKu9ONNSvF+I78eXqaqcWWspLuupUJp7UxR+odwxY0gIb8Cfl8IvlDJmyPweUqQ3n4TfZkvhXiF8EP/7zagYSy3Frwrh2/iyXVXVYfOb0SbEw7RPx49rwqtgLT4X+CkM9uDDHGBY+BzwMLkhDF47zcpZ4fEZmOfgwQpgRBidcjjRvwn9EzhyWRiNxL1jwYJ40/ynXYzZy40g/kpllYmeKwtVM6JkfZonETojPSrPh5k5Pc49syneNKXeYWoQRKFCD+stsPc/AwpNua4EjXP1CKJHLTOZbe7E9mlrrM22xe5Lvsx/fgD76hFEIf7eFBOAzGbVjkfWpXq1QUiWxy6IPDTHGn3Wle1Eg9Anc1tsm/bGa/FwTKfh2noXOAKspEaE1sw9FcT9MYJIHbnJGsSDLIg6kMtmIkXcrDLFppbFwLtG3diaJXFmGjqIjIyMScZfagBKIrdyoEkAAAAASUVORK5CYII="
+          class="w-6"
+          alt="search--v1"
+        />
+      </div>
+
+      <img src="./image/UHFbanner-MSlogo.png" class="w-[28%]" alt="" />
+      <div class="flex gap-6 mr-6">
+        <img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACUElEQVR4nO2ZPWtUQRSGn9WAEsS0foUQNRo/QCTY5A8YCaKVnaCSqBERCQh2VoKNjQgWFhqMJhJEghEri5hSrGwUAgG/BRcNgkXErBx4L1wk7JJ1ztw7kAem2b3znvMus3PPmYEVykc/8AGo1RnfgRfACaBCSfnYwMS/Y7SsZt7nkny3xPeW9CZgEPip545TQg7JjJnoa/DsaRl5ReKsAb7JzC4SZ1RGhkicQRkZJ3F2yMjXsu5ezWzZ3STOAxk5S+KckZExEqdbRj6v/E9KxPgyazSPMRPCyFAJjMyGMLI79z+JzV3FvhJCzF6GXyS4k3isUxW+CGwNJTohI1YVx+KUYj4PKXpeoveJx4xHT7RXop+IQ5eW1DzQGlK4ouKxpiDeXFWs2x7ijyQ+gC+r1MVarF6PABckfg9fDirOW6+yaJ8CWN8fo5K47BWgkuvjtznFaAN+AX+Adhx5LCO2x3twTvrPcOaiAo046b+U/jGc2V/ngO9/2SPtKrCWCFtjVQE7A2tfl+5NIjGpgHbQHYoWVdem20MkhhXwTkDNI9J8TUR6FHTOYTccJiKrdY8Sugv8DWwgMk8Cm1gEblAAl5TALRLngIy8IXFa1PTUdMuVNJMycpLEGZCRaRJnfa5cuQZ0aGtOkqPAQsBteLpIM4cDGlkANhZlZERJ2Etys8ZUg3uVsTpz7BK2ELKq1ZLJaM/1FktRrTPnBwWRvU+2LCOp+SbmuJOdd00pMRtP9dlEwDlRrrGz05X8sOWzPeAcYmBr/aGWjA37VRsl1Mwc/gIXmFSH9pqNAQAAAABJRU5ErkJggg=="
+          class="w-6"
+          alt="shopping-cart--v1"
+        />
+        <img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAABwUlEQVR4nO2WyUoDQRCGPxU0KGrO5qoXiQcPPocbKD6ASVziybfw5PIM6iN4ElRccYkgqCfNTbxEVBRUjDT8A01wkplkOir4QUHorvq7pru6OvDPH6QFyAIHwLNsH5gFml0vngByQNHHToEul1+e00KXwCDQLhsCrjR34mon5qzF49/Mx60kZlwkcChx8+V+jMjH1ETkPEncbLkfHfJ5/KkEOl0mcCBxU3CVjmDPRQJZiV+VKcJr+Uy7uoZnVhLDOvMOfbm3+LHLhpRQs/FrRCcuG5FHs+75ngrT2K623Xkr/nU0yepCj7Z5DTi3+kJRv83YKjAFdEdZ+WngyKfoPmTfzZmYVC11MQrkLcECsC7RgZJeENdYWj4FKy6vaxqKBUvAPMETQCxEfEwx55aO0QxESgGvQAZooHoaVROv0pwMEnQr5zGiY1yaN0GcX+TcGmECbdI02oFfvakAvruySmTC/FEZkvM7sAT0lfH9lK9fnfQDK9Iq6gELxLwVZGyjigQ2rfg3aYYiCSwD97qKHtvAA3BhLXChMTPnYcbugEWglxpoKOn3O2WeYzNXFzq1Q94RJDVWdz4rFKFztkrOPTRf7JOmc1YC3sEAAAAASUVORK5CYII="
+          class="w-6"
+          alt="add-user-male--v2"
+        />
+      </div>
+    </nav>
+    <nav
+      class="w-full bg-white py-5 pl-24 flex-row justify-between hidden md:flex"
+    >
+      <div class="flex flex-row items-center gap-10 text-sm">
+        <!-- <img src="./image/UHFbanner-MSlogo.png" class="w-[14%]" alt="" /> -->
+        <ul class="flex gap-10">
+          <a class="hover:underline hover:underline-offset-8" href="Game Pass"
+            ><li>Game Pass</li></a
+          >
+          <a class="hover:underline hover:underline-offset-8" href="Games">
+            <li>Games</li></a
+          >
+          <a class="hover:underline hover:underline-offset-8" href="Devices"
+            ><li>Devices</li></a
+          >
+          <a class="hover:underline hover:underline-offset-8" href="store"
+            ><li>Store</li></a
+          >
+          <a class="hover:underline hover:underline-offset-8" href="Community"
+            ><li>Community</li></a
+          >
+          <a class="hover:underline hover:underline-offset-8" href="Support"
+            ><li>Support</li></a
+          >
+          <a class="hover:underline hover:underline-offset-8" href="Developer"
+            ><li>Developer</li></a
+          >
+        </ul>
+      </div>
+      <div class="pr-16 text-sm">
+        <ul class="flex flex-row items-center gap-10">
+          <span class="flex flex-row items-center gap-2"
+            ><a
+              class="hover:underline hover:underline-offset-8"
+              href="All microsoft"
+              ><li>All microsoft</li></a
+            ><img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAv0lEQVR4nO3XSwqDMBRG4bOJG3T/O2lHfU3qoMtpETIQKSVqHjf0PyA48ML9zCiglFJKKaXUP3cC7kDAXwF4AOeUj6/AG5icYULcad7tkjJgwDMOvICx/I6bdxr2Do49Ijxh7CjCA8ZyIVpiLDeiBcZKIWpirDSiBqYaoiSmOqIEphkiJ6Y5IgfGDeIIxh1iD8YtYgvGPSIF0w3iF6Y7xLfb3LR693TrTGp5Ct2dxLr579/i091JKKWUUkophcs+GiV0FcyNP/cAAAAASUVORK5CYII="
+              class="w-4"
+              alt="expand-arrow--v2"
+          /></span>
+          <span class="flex flex-row items-center gap-2"
+            ><a class="hover:underline hover:underline-offset-8" href="Search"
+              ><li>Search</li></a
+            ><img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACjUlEQVR4nO2YTYiNYRTHf8JN49uSkiQfYywkKQsWSIoZOxYyO0kpSUYhC0kuKx8bHzspTc3G4mKaxsJCk6TJDPnYXWqmfBRC1xg99ajT6b133Jlz7n3v9P7q2dze+/+/532e5zznOZCRkZEWpgHLgC3ALmArsA6YTQMwHzgEdAPfgdGE8QfoB/LAGlJGE9ABfCnz8pVGd1oC2gF8qPCiH4FBoAiUyjxTAi7F5VgXjgK/1UsNAVfinpihnp8CrAKOA30JAT2My7Om5NVLfAXOALOq0NgJvFA6g7UMpl2Zv4lfejzkgFsJ+8Z9ma0HfgnTJ0Zf8KQK5iLOPBZm74FFhtrXhXbYe804sVudBxuN9XPAgPDowolnwqTTyaNVLbEWa4MWZbAaP54KnwvW4seEeEiZnnQIr+fW4p1C/Dy+NKu9ONNSvF+I78eXqaqcWWspLuupUJp7UxR+odwxY0gIb8Cfl8IvlDJmyPweUqQ3n4TfZkvhXiF8EP/7zagYSy3Frwrh2/iyXVXVYfOb0SbEw7RPx49rwqtgLT4X+CkM9uDDHGBY+BzwMLkhDF47zcpZ4fEZmOfgwQpgRBidcjjRvwn9EzhyWRiNxL1jwYJ40/ynXYzZy40g/kpllYmeKwtVM6JkfZonETojPSrPh5k5Pc49syneNKXeYWoQRKFCD+stsPc/AwpNua4EjXP1CKJHLTOZbe7E9mlrrM22xe5Lvsx/fgD76hFEIf7eFBOAzGbVjkfWpXq1QUiWxy6IPDTHGn3Wle1Eg9Anc1tsm/bGa/FwTKfh2noXOAKspEaE1sw9FcT9MYJIHbnJGsSDLIg6kMtmIkXcrDLFppbFwLtG3diaJXFmGjqIjIyMScZfagBKIrdyoEkAAAAASUVORK5CYII="
+              class="w-4"
+              alt="search--v1"
+          /></span>
+          <span class="flex flex-row items-center gap-2"
+            ><a class="hover:underline hover:underline-offset-8" href="Cart">
+              <li>Cart</li></a
+            >
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACUElEQVR4nO2ZPWtUQRSGn9WAEsS0foUQNRo/QCTY5A8YCaKVnaCSqBERCQh2VoKNjQgWFhqMJhJEghEri5hSrGwUAgG/BRcNgkXErBx4L1wk7JJ1ztw7kAem2b3znvMus3PPmYEVykc/8AGo1RnfgRfACaBCSfnYwMS/Y7SsZt7nkny3xPeW9CZgEPip545TQg7JjJnoa/DsaRl5ReKsAb7JzC4SZ1RGhkicQRkZJ3F2yMjXsu5ezWzZ3STOAxk5S+KckZExEqdbRj6v/E9KxPgyazSPMRPCyFAJjMyGMLI79z+JzV3FvhJCzF6GXyS4k3isUxW+CGwNJTohI1YVx+KUYj4PKXpeoveJx4xHT7RXop+IQ5eW1DzQGlK4ouKxpiDeXFWs2x7ijyQ+gC+r1MVarF6PABckfg9fDirOW6+yaJ8CWN8fo5K47BWgkuvjtznFaAN+AX+Adhx5LCO2x3twTvrPcOaiAo046b+U/jGc2V/ngO9/2SPtKrCWCFtjVQE7A2tfl+5NIjGpgHbQHYoWVdem20MkhhXwTkDNI9J8TUR6FHTOYTccJiKrdY8Sugv8DWwgMk8Cm1gEblAAl5TALRLngIy8IXFa1PTUdMuVNJMycpLEGZCRaRJnfa5cuQZ0aGtOkqPAQsBteLpIM4cDGlkANhZlZERJ2Etys8ZUg3uVsTpz7BK2ELKq1ZLJaM/1FktRrTPnBwWRvU+2LCOp+SbmuJOdd00pMRtP9dlEwDlRrrGz05X8sOWzPeAcYmBr/aGWjA37VRsl1Mwc/gIXmFSH9pqNAQAAAABJRU5ErkJggg=="
+              class="w-4"
+              alt="shopping-cart--v1"
+          /></span>
+          <span class="flex flex-row items-center gap-2"
+            ><a class="hover:underline hover:underline-offset-8" href="Sign"
+              ><li>Sign</li></a
+            ><img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAABwUlEQVR4nO2WyUoDQRCGPxU0KGrO5qoXiQcPPocbKD6ASVziybfw5PIM6iN4ElRccYkgqCfNTbxEVBRUjDT8A01wkplkOir4QUHorvq7pru6OvDPH6QFyAIHwLNsH5gFml0vngByQNHHToEul1+e00KXwCDQLhsCrjR34mon5qzF49/Mx60kZlwkcChx8+V+jMjH1ETkPEncbLkfHfJ5/KkEOl0mcCBxU3CVjmDPRQJZiV+VKcJr+Uy7uoZnVhLDOvMOfbm3+LHLhpRQs/FrRCcuG5FHs+75ngrT2K623Xkr/nU0yepCj7Z5DTi3+kJRv83YKjAFdEdZ+WngyKfoPmTfzZmYVC11MQrkLcECsC7RgZJeENdYWj4FKy6vaxqKBUvAPMETQCxEfEwx55aO0QxESgGvQAZooHoaVROv0pwMEnQr5zGiY1yaN0GcX+TcGmECbdI02oFfvakAvruySmTC/FEZkvM7sAT0lfH9lK9fnfQDK9Iq6gELxLwVZGyjigQ2rfg3aYYiCSwD97qKHtvAA3BhLXChMTPnYcbugEWglxpoKOn3O2WeYzNXFzq1Q94RJDVWdz4rFKFztkrOPTRf7JOmc1YC3sEAAAAASUVORK5CYII="
+              class="w-4"
+              alt="add-user-male--v2"
+          /></span>
+        </ul>
+      </div>
+    </nav>
+    <!-- first image start -->
+    <div
+      class="absolute md:space-y-4 md:space-x-8 md:pt-[8%] pt-[450px] md:pl-16 md:flex-col flex flex-col ml-11 md:h-[50vh]"
+    >
+      <h1 class="font-bold md:text-6xl text-3xl text-white hidden md:inline">
+        Call of Duty®: Black <br />
+        Ops 6 Vault Edition
+      </h1>
+      <p class="text-4xl text-white hidden md:inline">
+        Unlock premium content now <br />including Season 01 BlackCell and
+        <br />
+        more
+      </p>
+      <button
+        class="text-black bg-[#9bf00b] md:h-20 w-36 h-12 font-semibold hover:underline hover:underline-offset-8 hover:scale-105 mt-8 ml-24 hidden md:inline"
+        type="button"
+      >
+        GET IT NOW
+      </button>
+      <a
+        class="text-white hover:underline hover:underline-offset-8 hover:scale-100 hidden md:inline md:ml-2"
+        href="UPGRADE NOW"
+        >UPGRADE NOW</a
+      >
+    </div>
+    <div>
+      <img
+        src="../../image/06adbbd8-8b17-4f58-abfc-299e739b9117.jpg"
+        class="md:w-full md:h-[70vh] h-[50vh] hidden md:inline"
+        alt=""
+      />
+      <img
+        src="../../image/duty.webp"
+        class="w-full h-[70vh] md:hidden"
+        alt=""
+      />
+    </div>
+    <!-- image end -->
+
+    <!-- game and sign start  -->
+    <div
+      class="flex md:flex-row flex-row w-[30] md:w-[30] md:pt-16 gap-x-10 justify-center items-center"
+    >
+      <span
+        class="text-center text-[#107c10] hover:underline hover:underline-offset-8 hover:scale-105 hidden md:inline"
+      >
+        <img
+          src="../../image/37ec5a7a-08b4-466f-93e3-81fb5dd0b471.svg"
+          class="w-24"
+          alt=""
+        />
+        <a href="GAME PASS">GAME PASS</a></span
+      >
+      <span
+        class="text-center text-[#107c10] hover:underline hover:underline-offset-8 hover:scale-105 hidden md:inline"
+        ><img
+          src="../../image/e2a830ea-71e7-42fa-af94-7a07d66f150e.svg"
+          class="w-24"
+          alt=""
+        />
+        <a href="GAME">GAME</a>
+      </span>
+      <span
+        class="text-center text-[#107c10] hover:underline hover:underline-offset-8 hover:scale-105 hidden md:inline"
+        ><img
+          src="../../image/12744081-03f9-42a4-87be-e869ddce3327.svg"
+          class="w-24"
+          alt=""
+        />
+        <a href="CONSOLES">CONSOLES</a></span
+      >
+      <span
+        class="text-center text-[#107c10] hover:underline hover:underline-offset-8 hover:scale-105 hidden sm:inline"
+        ><img
+          src="../../image/29ffa9b2-2d48-433b-abb7-99229bcbaa8b.svg"
+          class="w-24"
+          alt=""
+        />
+        <a href="ACCESSORIES">ACCESSORIES</a></span
+      >
+      <span
+        class="text-center text-[#107c10] hover:underline hover:underline-offset-8 hover:scale-105 hidden md:inline"
+        ><img
+          src="../../image/509a35c3-472d-46ed-b29d-2f47adca7be9.svg"
+          class="w-24"
+          alt=""
+        />
+        <a href="DEALS">DEALS</a></span
+      >
+      <span
+        class="text-center text-[#107c10] hover:underline hover:underline-offset-8 hover:scale-105 hidden md:inline"
+        ><img
+          src="../../image/30abec76-ab4c-4275-b0ca-725a6eb2f85f.svg"
+          class="w-24"
+          alt=""
+        />
+        <a href="SIGN IN">SIGN IN</a></span
+      >
+    </div>
+    <div
+      class="flex md:flex-row flex-row w-[30] md:w-[30] pt-16 gap-x-10 justify-center items-center"
+    >
+      <span
+        class="text-center text-[#107c10] hover:underline hover:underline-offset-8 hover:scale-105 md:hidden"
+      >
+        <img
+          src="../../image/37ec5a7a-08b4-466f-93e3-81fb5dd0b471.svg"
+          class="w-24"
+          alt=""
+        />
+        <a href="GAME PASS">GAME PASS</a></span
+      >
+      <span
+        class="text-center text-[#107c10] hover:underline hover:underline-offset-8 hover:scale-105 md:hidden"
+        ><img
+          src="../../image/e2a830ea-71e7-42fa-af94-7a07d66f150e.svg"
+          class="w-24"
+          alt=""
+        />
+        <a href="GAME">GAME</a>
+      </span>
+      <span
+        class="text-center text-[#107c10] hover:underline hover:underline-offset-8 hover:scale-105 md:hidden"
+        ><img
+          src="../../image/12744081-03f9-42a4-87be-e869ddce3327.svg"
+          class="w-24"
+          alt=""
+        />
+        <a href="CONSOLES">CONSOLES</a></span
+      >
+    </div>
+    <div
+      class="flex md:flex-row flex-row w-[30] md:w-[30] pt-16 gap-x-10 justify-center items-center md:hidden"
+    >
+      <span
+        class="text-center text-[#107c10] hover:underline hover:underline-offset-8 hover:scale-105 md:hidden"
+        ><img
+          src="../../image/29ffa9b2-2d48-433b-abb7-99229bcbaa8b.svg"
+          class="w-24"
+          alt=""
+        />
+        <a href="ACCESSORIES">ACCESSORIES</a></span
+      >
+      <span
+        class="text-center text-[#107c10] hover:underline hover:underline-offset-8 hover:scale-105 md:hidden"
+        ><img
+          src="../../image/509a35c3-472d-46ed-b29d-2f47adca7be9.svg"
+          class="w-24"
+          alt=""
+        />
+        <a href="DEALS">DEALS</a></span
+      >
+      <span
+        class="text-center text-[#107c10] hover:underline hover:underline-offset-8 hover:scale-105 md:hidden"
+        ><img
+          src="../../image/30abec76-ab4c-4275-b0ca-725a6eb2f85f.svg"
+          class="w-24"
+          alt=""
+        />
+        <a href="SIGN IN">SIGN IN</a></span
+      >
+    </div>
+    <!-- game and sign end -->
+    <!-- first 4 image start -->
+    <div class="flex md:flex-row flex-col">
+      <div class="flex md:flex-col">
+        <div class="flex md:flex-col flex-col md:w-[100%] p-2 mt-6 gap-y-3">
+          <h1
+            class="md:absolute text-5xl md:text-white font-bold md:mt-[36%] mt-4 text-center md:pl-10"
+          >
+            NINJA GAIDEN 2 Black
+          </h1>
+          <h4
+            class="md:absolute hidden md:inline text-2xl md:text-white mt-[43%] pl-10 md:mt-[40%]"
+          >
+            Play the definitive edition of the original with Game Pass.
+          </h4>
+          <a
+            class="md:absolute hidden md:inline text-xl md:text-white md:mt-[44%] font-bold hover:text-[#9bf00b] hover:underline mt-[46%] pl-10"
+            href="GET IT NOW"
+            >GET IT NOW</a
+          >
+          <img
+            src="../../image/ninja black.jpg"
+            class="md:w-[100%] w-full"
+            alt=""
+          />
+          <div class="flex md:flex-row flex-col w-full">
+            <img
+              src="../../image/clair obscur.jpg"
+              class="md:w-[50%] md:h-[50vh]"
+              alt=""
+            />
+            <div
+              class="md:w-[50%] md:h-[50vh] h-[35vh] bg-[#107c10] flex flex-col"
+            >
+              <button
+                class="bg-[#ffd800] font-medium mt-[6%] md:mt-14 ml-16 md:w-[52%] w-[50%] h-[5vh]"
+              >
+                COMING TO GAME PASS
+              </button>
+              <h1 class="text-white text-2xl ml-16 mt-4 font-medium">
+                Clair Obscur: Expedition <br />
+                33
+              </h1>
+              <h2 class="text-white text-2xl ml-16 mt-6">
+                Lead the expedition. Break the cycle.
+              </h2>
+              <span class="flex flex-row mt-5 gap-3"
+                ><a
+                  class="text-white font-bold hover:text-[#9bf00b] hover:underline ml-16"
+                  href="PRE-ORDER NOW"
+                  >PRE-ORDER NOW</a
+                ><img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA8UlEQVR4nNXWvU7DQAwH8IyJXVKBEAjaqgti4cn6QkFnR1nyIrBV6tqqHyA6lYEmPUPYQYciFm68WMXSzT/p7n+2o+gYyhxO+yTwSBYWRR2POkHK6ixli1MW/Po5Fp47wVh6k1+kPWThiapkGBQyH71zd2U+7L5KBkGxrMELH8YWNsExbvCSLSx9WL5ProNi7l1cGDzYOjjmEseCLypYfojHLLj1BGRlPuEqKMaS3pDgTgWj95Nbtviqg9V4Rxbe/mI4+38QaVydShhyjXgXGh+WNFoQazTVTGNMGK3Bx1qjvNRaTqJ23WKBBxaYd4aErm+uJ5aFOVosIAAAAABJRU5ErkJggg=="
+                  class="w-5 h-5"
+                  alt="forward"
+              /></span>
+            </div>
+          </div>
+          <div class="flex md:flex-row flex-col-reverse">
+            <div
+              class="md:w-[50%] md:h-[50vh] h-[35vh] bg-[#107c10] flex flex-col"
+            >
+              <button
+                class="bg-[#ffd800] font-medium md:mt-[15%] mt-8 ml-16 w-16"
+              >
+                NEW
+              </button>
+              <h1 class="text-white text-2xl ml-16 mt-4 font-medium">
+                Elevate your game
+              </h1>
+              <h2 class="text-white text-2xl ml-16 mt-6">
+                Reveal the Xbox Wireless Controller - Pulse Cipher <br />
+                Special Edition
+              </h2>
+              <span class="gap-3 flex flex-row"
+                ><a
+                  class="text-white font-bold hover:text-[#9bf00b] hover:underline ml-16 mt-8"
+                  href="LEARN MORE"
+                  >LEARN MORE</a
+                ><img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA8UlEQVR4nNXWvU7DQAwH8IyJXVKBEAjaqgti4cn6QkFnR1nyIrBV6tqqHyA6lYEmPUPYQYciFm68WMXSzT/p7n+2o+gYyhxO+yTwSBYWRR2POkHK6ixli1MW/Po5Fp47wVh6k1+kPWThiapkGBQyH71zd2U+7L5KBkGxrMELH8YWNsExbvCSLSx9WL5ProNi7l1cGDzYOjjmEseCLypYfojHLLj1BGRlPuEqKMaS3pDgTgWj95Nbtviqg9V4Rxbe/mI4+38QaVydShhyjXgXGh+WNFoQazTVTGNMGK3Bx1qjvNRaTqJ23WKBBxaYd4aErm+uJ5aFOVosIAAAAABJRU5ErkJggg=="
+                  class="w-5 h-5 mt-8"
+                  alt="forward"
+              /></span>
+            </div>
+            <img
+              src="../../image/elevate your game.jpg"
+              class="md:w-[50%] md:h-[50vh]"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+      <!-- 4 image end -->
+      <!-- next 4 image start -->
+
+      <div class="flex flex-col">
+        <div class="flex md:flex-row flex-col-reverse p-2 mt-6 md:w-full">
+          <div class="md:w-[55%] md:h-[55vh] h-[30vh] bg-[#107c10]">
+            <h1 class="text-white text-2xl ml-10 md:mt-[35%] mt-12 font-medium">
+              Discover your next favourite game
+            </h1>
+            <h2 class="text-white text-2xl ml-10 mt-6">
+              Play hundreds of games for one low monthly price
+            </h2>
+            <span class="gap-3 flex flex-row"
+              ><a
+                class="text-white font-bold hover:text-[#9bf00b] hover:underline ml-10 mt-8"
+                href="JOIN NOW"
+                >JOIN NOW</a
+              ><img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA8UlEQVR4nNXWvU7DQAwH8IyJXVKBEAjaqgti4cn6QkFnR1nyIrBV6tqqHyA6lYEmPUPYQYciFm68WMXSzT/p7n+2o+gYyhxO+yTwSBYWRR2POkHK6ixli1MW/Po5Fp47wVh6k1+kPWThiapkGBQyH71zd2U+7L5KBkGxrMELH8YWNsExbvCSLSx9WL5ProNi7l1cGDzYOjjmEseCLypYfojHLLj1BGRlPuEqKMaS3pDgTgWj95Nbtviqg9V4Rxbe/mI4+38QaVydShhyjXgXGh+WNFoQazTVTGNMGK3Bx1qjvNRaTqJ23WKBBxaYd4aErm+uJ5aFOVosIAAAAABJRU5ErkJggg=="
+                class="w-4 h-5 mt-8"
+                alt="forward"
+            /></span>
+          </div>
+          <img
+            src="../../image/game pass.jpg"
+            class="md:w-[60%] md:h-[55vh]"
+            alt=""
+          />
+        </div>
+        <div class="flex p-2">
+          <img
+            src="../../image/ninja.jpg"
+            class="md:w-full md:h-[930px]"
+            alt=""
+          />
+        </div>
+        <div class="flex md:flex-row flex-col-reverse p-2">
+          <div class="md:w-[50%] md:h-[50vh] h-[30vh] bg-[#107c10]">
+            <button
+              class="bg-[#ffd800] font-medium md:mt-[29%] mt-14 ml-16 w-48"
+            >
+              COMING TO GAME PASS
+            </button>
+            <h1 class="text-white text-2xl ml-16 mt-4 font-medium">Avowed</h1>
+            <h2 class="text-white text-2xl ml-16 mt-6">Forge your destiny</h2>
+            <span class="gap-3 flex flex-row"
+              ><a
+                class="text-white font-bold hover:text-[#9bf00b] hover:underline ml-16 mt-8"
+                href="PRE-ORDER NOW"
+                >PRE-ORDER NOW</a
+              ><img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA8UlEQVR4nNXWvU7DQAwH8IyJXVKBEAjaqgti4cn6QkFnR1nyIrBV6tqqHyA6lYEmPUPYQYciFm68WMXSzT/p7n+2o+gYyhxO+yTwSBYWRR2POkHK6ixli1MW/Po5Fp47wVh6k1+kPWThiapkGBQyH71zd2U+7L5KBkGxrMELH8YWNsExbvCSLSx9WL5ProNi7l1cGDzYOjjmEseCLypYfojHLLj1BGRlPuEqKMaS3pDgTgWj95Nbtviqg9V4Rxbe/mI4+38QaVydShhyjXgXGh+WNFoQazTVTGNMGK3Bx1qjvNRaTqJ23WKBBxaYd4aErm+uJ5aFOVosIAAAAABJRU5ErkJggg=="
+                class="w-5 h-5 mt-8"
+                alt="forward"
+            /></span>
+          </div>
+          <img
+            src="../../image/avowed.jpg"
+            class="md:w-[50%] md:h-[50vh]"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+
+    <img
+      src="../../image/p0njyvwuyyo51.webp"
+      class="w-[100%] h-[80vh] p-2 hidden md:inline"
+      alt=""
+    />
+    <img
+      src="../../image/3.9505edd3-27da-4bed-96d9-7fc9a08f24d0"
+      class="p-2 md:hidden"
+      alt=""
+    />
+    <div class="flex md:flex-row flex-col">
+      <div class="flex flex-col md:w-[50%]">
+        <div class="flex md:flex-row flex-col-reverse p-2 w-[100%]">
+          <div class="md:w-[50%] md:h-[50vh] h-[30vh] bg-[#107c10]">
+            <h1 class="text-white text-2xl ml-16 md:mt-24 mt-12 font-medium">
+              Assassin's Creed Shadows
+            </h1>
+            <h2 class="text-white text-2xl ml-16 mt-6">
+              Experience an epic historical action-adventure set in feudal Japan
+            </h2>
+            <span
+              class="flex flex-row gap-3 text-white font-medium mt-6 ml-16 hover:underline"
+              ><a href="PRE-ORDER NOW">PRE-ORDER NOW</a
+              ><img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAArElEQVR4nO3XIU4DMACF4Qb0BAkHIZMT+KHG7bAcCY7BhhoK85FhSJbgX5v3ybqXv2nSMapy4QYveMPTmBV2/nzjMGaEO3ysMuYBp6sxz2NGOiaUlgnVMqlaJlXLpGqZVC2TqmVSYYvPVX6a26sxX9iMBYacpxtihav1z8t1GDPpiBQtkaIlUrREipZI0RIpWiJFS6TAPY5Tf4ou8Dj9iAvc4hXv2P8eVo0l/ADNjryQULNGUwAAAABJRU5ErkJggg=="
+                class="w-5 h-5"
+                alt="forward--v1"
+            /></span>
+          </div>
+          <img
+            src="../../image/Assassin,s creed shadows.jpg"
+            class="md:w-[50%] h-[50vh]"
+            alt=""
+          />
+        </div>
+        <div class="flex md:flex-row flex-col md:w-[100%] p-2">
+          <img
+            src="../../image/EA SPORTS.jpg"
+            class="md:w-[50%] h-[50vh]"
+            alt=""
+          />
+          <div class="md:w-[50%] md:h-[50vh] h-[40vh] md:bg-white bg-gray-200">
+            <button
+              class="bg-[#ffd800] w-[35%] mt-14 md:mt-[18%] ml-16 font-medium"
+            >
+              NEW TO EA PLAY
+            </button>
+            <h1 class="text-black text-2xl ml-16 mt-6 font-medium">
+              EA SPORTS™ UFC® 5
+            </h1>
+            <h2 class="text-black text-2xl ml-16 mt-6">
+              Step into the Octagon. Unleash your fury with Game Pass Ultimate
+            </h2>
+            <span
+              class="flex flex-row gap-3 text-black font-medium mt-6 ml-16 hover:underline"
+              ><a href="PRE-ORDER NOW">PRE-ORDER NOW</a
+              ><img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABbUlEQVR4nO2aTUrEQBCFa7KckH6v4jFc+AMu9C6CKwW34kXEtTJ6AXfiEZRBD6QSKZ0MYXDUCQxWhf6gIZBNf9SrTppukR6o6gGAM5KnAHYlGqoKkg8km+4AcGvvJAoA7hclOmMKQMU7qrrfTrosy2Y0GjVFUXw+h5IBcN5O2CREZD5CyeCrub8VCSWTUtrrRmtRJJQMgLvfZMbjsX8ZwFZfTock87iizEtVVRviDWQZ5sqsnRwz5pitnxwz5pitnxwz+o2Z9vzRpAwhZgBuxCN/rUzZ2ZwB2JaoMkVRzEVSSifikUGIoEe0SG6Jw2Z/WrHZJ+KJQSy/6FEJks+uPohZwgu5El5AbmwnIFfCCciVcAKGUIm6rtMgDnoAXIauhGGbHJJv4Q9DSR62k7TtaEgJA8DRMpEwEgaAHZLvbbRMJuQVDoPk9Q+Xavw19jJSSjXJq7Yys/EK4CLUNSeZYZfNABzbAqCqm/89H+MDMEGEbgYWHQ8AAAAASUVORK5CYII="
+                class="w-5 h-5"
+                alt="forward--v1"
+              />
+            </span>
+          </div>
+        </div>
+        <div class="w-[100%] p-2 h-[50vh] hidden md:inline">
+          <button
+            class="bg-[#ffd800] w-[5%] md:mt-[43%] ml-16 font-medium absolute hidden md:inline"
+          >
+            NEW DLC
+          </button>
+          <h1
+            class="text-black text-5xl ml-16 md:mt-[46%] font-bold absolute hidden md:inline"
+          >
+            Minecraft – Hello Kitty® and <br />
+            Friends
+          </h1>
+          <h2
+            class="text-black text-xl ml-16 md:mt-[54%] absolute hidden md:inline"
+          >
+            Farming meets friendship in this sweet new DLC
+          </h2>
+          <span
+            class="flex flex-row gap-3 text-black font-bold md:mt-[58%] ml-16 hover:underline absolute"
+            ><a href="GET IT NOW">GET IT NOW</a
+            ><img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABbUlEQVR4nO2aTUrEQBCFa7KckH6v4jFc+AMu9C6CKwW34kXEtTJ6AXfiEZRBD6QSKZ0MYXDUCQxWhf6gIZBNf9SrTppukR6o6gGAM5KnAHYlGqoKkg8km+4AcGvvJAoA7hclOmMKQMU7qrrfTrosy2Y0GjVFUXw+h5IBcN5O2CREZD5CyeCrub8VCSWTUtrrRmtRJJQMgLvfZMbjsX8ZwFZfTock87iizEtVVRviDWQZ5sqsnRwz5pitnxwz5pitnxwz+o2Z9vzRpAwhZgBuxCN/rUzZ2ZwB2JaoMkVRzEVSSifikUGIoEe0SG6Jw2Z/WrHZJ+KJQSy/6FEJks+uPohZwgu5El5AbmwnIFfCCciVcAKGUIm6rtMgDnoAXIauhGGbHJJv4Q9DSR62k7TtaEgJA8DRMpEwEgaAHZLvbbRMJuQVDoPk9Q+Xavw19jJSSjXJq7Yys/EK4CLUNSeZYZfNABzbAqCqm/89H+MDMEGEbgYWHQ8AAAAASUVORK5CYII="
+              class="w-5 h-5"
+              alt="forward--v1"
+            />
+          </span>
+          <img
+            src="../../image/Minecraft.jpg"
+            class="md:w-[100%] md:h-[934px]"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="flex flex-col md:w-[50%]">
+        <div class="flex md:flex-row flex-col-reverse w-[100%] p-2">
+          <div class="md:w-[50%] md:h-[50vh] h-[40vh] bg-[#107c10]">
+            <button
+              class="bg-[#ffd800] w-[35%] md:mt-[14%] mt-10 ml-16 font-medium"
+            >
+              NEW SEASON
+            </button>
+            <h1 class="text-white text-2xl ml-16 mt-6 font-medium">
+              Diablo IV: Season <br />
+              of Witchcraft
+            </h1>
+            <h2 class="text-white text-2xl ml-16 mt-6">
+              Harness wondrous Witchcraft powers and explore the latest updates
+            </h2>
+            <span
+              class="flex flex-row gap-3 text-white font-bold md:mt-6 mt-4 ml-16 hover:underline"
+              ><a href="GET IT NOW">GET IT NOW</a
+              ><img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAsUlEQVR4nO3ZwQqCYBRE4esTJlK4qGd3oRRIvUHBESvIhe3nXuZbRSuH8wtaEWY6gBPwAK5AGxkBDXDn5wn0kREwb4bkHQN034svMea4M+YFXCIbPEYULiMKlxGFy4hyGVUuo8plVFUr0/95OWujyJgpigwZI5MSR4vP72J7N/s5svAIFS6hwiVUuIQKl1CBHztE4BIiKFLiUOLPUGBKP2IF3NKP2BytERjWz+8vzWpaAFg7XsQMSUrmAAAAAElFTkSuQmCC"
+                class="w-5 h-5"
+                alt="forward--v1"
+              />
+            </span>
+          </div>
+          <img
+            src="../../image/Diablo iv season of witchcraft.jpg"
+            class="md:w-[50%] h-[50vh]"
+            alt=""
+          />
+        </div>
+        <div class="p-2 hidden md:inline">
+          <button
+            class="bg-[#ffd800] w-[10%] mt-[37%] ml-16 font-medium absolute hidden md:inline"
+          >
+            NOW AVAILABLE
+          </button>
+          <h1
+            class="text-white text-5xl ml-16 mt-[40%] font-bold absolute hidden md:inline"
+          >
+            SYNDUALITY Echo of Ada
+          </h1>
+          <h2
+            class="text-white text-xl ml-16 mt-[45%] absolute hidden md:inline"
+          >
+            Survive the surface in this new PvPvE extraction shooter
+          </h2>
+          <span
+            class="flex flex-row gap-3 text-white font-bold mt-[49%] ml-16 hover:underline absolute"
+            ><a href="GET IT NOW">GET IT NOW</a
+            ><img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAsUlEQVR4nO3ZwQqCYBRE4esTJlK4qGd3oRRIvUHBESvIhe3nXuZbRSuH8wtaEWY6gBPwAK5AGxkBDXDn5wn0kREwb4bkHQN034svMea4M+YFXCIbPEYULiMKlxGFy4hyGVUuo8plVFUr0/95OWujyJgpigwZI5MSR4vP72J7N/s5svAIFS6hwiVUuIQKl1CBHztE4BIiKFLiUOLPUGBKP2IF3NKP2BytERjWz+8vzWpaAFg7XsQMSUrmAAAAAElFTkSuQmCC"
+              class="w-5 h-5"
+              alt="forward--v1"
+            />
+          </span>
+          <img
+            src="../../image/SYNDUALITY echo.jpg"
+            class="md:h-[905px] w-[100%]"
+            alt=""
+          />
+        </div>
+        <div class="flex md:flex-row flex-col-reverse w-[100%] p-2">
+          <div class="md:w-[50%] md:h-[54vh] h-[40vh] md:bg-white bg-gray-100">
+            <button
+              class="bg-[#ffd800] w-[35%] md:mt-[18%] mt-14 ml-16 font-medium"
+            >
+              NOW AVAILABLE
+            </button>
+            <h1 class="text-black text-2xl ml-16 mt-6 font-medium">
+              Lonely Mountains: <br />
+              Snow Riders
+            </h1>
+            <h2 class="text-black text-2xl ml-16 mt-6">
+              Crash over and over until you master the mountain with Game Pass.
+            </h2>
+            <span
+              class="flex flex-row gap-3 text-black font-medium mt-6 ml-16 hover:underline"
+              ><a href="PRE-ORDER NOW">PRE-ORDER NOW</a
+              ><img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABbUlEQVR4nO2aTUrEQBCFa7KckH6v4jFc+AMu9C6CKwW34kXEtTJ6AXfiEZRBD6QSKZ0MYXDUCQxWhf6gIZBNf9SrTppukR6o6gGAM5KnAHYlGqoKkg8km+4AcGvvJAoA7hclOmMKQMU7qrrfTrosy2Y0GjVFUXw+h5IBcN5O2CREZD5CyeCrub8VCSWTUtrrRmtRJJQMgLvfZMbjsX8ZwFZfTock87iizEtVVRviDWQZ5sqsnRwz5pitnxwz5pitnxwz+o2Z9vzRpAwhZgBuxCN/rUzZ2ZwB2JaoMkVRzEVSSifikUGIoEe0SG6Jw2Z/WrHZJ+KJQSy/6FEJks+uPohZwgu5El5AbmwnIFfCCciVcAKGUIm6rtMgDnoAXIauhGGbHJJv4Q9DSR62k7TtaEgJA8DRMpEwEgaAHZLvbbRMJuQVDoPk9Q+Xavw19jJSSjXJq7Yys/EK4CLUNSeZYZfNABzbAqCqm/89H+MDMEGEbgYWHQ8AAAAASUVORK5CYII="
+                class="w-5 h-5"
+                alt="forward--v1"
+              />
+            </span>
+          </div>
+          <img
+            src="../../image/lonely mountains.jpg"
+            class="md:w-[50%] md:h-[54vh]"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="bg-[#f2f2f2] w-[100%] md:h-[50vh] mt-10 flex md:flex-row flex-col md:space-x-14 space-y-5 md:p-16 p-8"
+    >
+      <ul class="flex flex-col gap-3">
+        <li class="text-gray-500 font-bold">Browse</li>
+        <a class="hover:underline text-gray-500 text-sm" href="Xbox consoles"
+          ><li>Xbox consoles</li></a
+        >
+        <a class="hover:underline text-gray-500 text-sm" href="Xbox games"
+          ><li>Xbox games</li></a
+        >
+        <a class="hover:underline text-gray-500 text-sm" href="Xbox Game Pass"
+          ><li>Xbox Game Pass</li></a
+        >
+        <a class="hover:underline text-gray-500 text-sm" href="Xbox accessories"
+          ><li>Xbox accessories</li></a
+        >
+      </ul>
+      <ul class="flex flex-col gap-3">
+        <li class="text-gray-500 font-bold">Resources</li>
+        <a class="hover:underline text-gray-500 text-sm" href="Xbox Support"
+          ><li>Xbox Support</li></a
+        >
+        <a class="hover:underline text-gray-500 text-sm" href="Feedback"
+          ><li>Feedback</li></a
+        >
+        <a
+          class="hover:underline text-gray-500 text-sm"
+          href="Community Standards"
+          ><li>Community Standards</li></a
+        >
+        <a
+          class="hover:underline text-gray-500 text-sm"
+          href="Photosensitive Seizure Warning"
+          ><li>Photosensitive Seizure Warning</li></a
+        >
+      </ul>
+      <ul class="flex flex-col gap-3">
+        <li class="text-gray-500 font-bold">Microsoft Store</li>
+        <a
+          class="hover:underline text-gray-500 text-sm"
+          href="Microsoft account"
+          ><li>Microsoft account</li></a
+        >
+        <a
+          class="hover:underline text-gray-500 text-sm"
+          href="Microsoft Store Support"
+          ><li>Microsoft Store Support</li></a
+        >
+        <a class="hover:underline text-gray-500 text-sm" href="Returns"
+          ><li>Returns</li></a
+        >
+        <a class="hover:underline text-gray-500 text-sm" href="Orders tracking"
+          ><li>Orders tracking</li></a
+        >
+      </ul>
+      <ul class="flex flex-col gap-3">
+        <li class="text-gray-500 font-bold">For Developer</li>
+        <a class="hover:underline text-gray-500 text-sm" href="Games"
+          ><li>Games</li></a
+        >
+      </ul>
+    </div>
+  </body>
+</html>

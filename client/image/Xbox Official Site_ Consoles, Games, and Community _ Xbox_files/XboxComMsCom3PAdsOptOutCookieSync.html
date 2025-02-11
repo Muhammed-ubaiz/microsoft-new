@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)https://www.microsoft.com/store/XboxComMsCom3PAdsOptOutCookieSync.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><script type="text/javascript">
+  "use strict";
+  const allowedOrigins = [
+    "https://www.xbox.com",
+    "https://greenland.dev.xbox.com:3000",
+    "https://origin-test.xbox.com",
+    "https://origin-int.xbox.com",
+    "https://origin-ppe.xbox.com",
+    "https://origin-prod.xbox.com",
+    "https://play.xbox.com",
+    "https://local.play.xbox.com:1337",
+    "https://local.play.xbox.com:1338",
+    "https://dev.play.xbox.com",
+    "https://test.play.xbox.com",
+    "https://int.play.xbox.com",
+    "https://support.xbox.com",
+    "https://staging.support.xbox.com",
+    "https://int.support.xbox.com",
+    "https://nightly.support.xbox.com",
+    "https://vnext.support.xbox.com",
+    "https://dev.support.xbox.com",
+  ];
+
+  window.addEventListener("message", event => {
+    if (allowedOrigins.includes(event.origin) && event.data?.id === "AdsOptOutSyncStart") {
+      const adsOptOut = document.cookie
+        .split("; ")
+        .find(row => row.startsWith("3PAdsOptOut="))
+        ?.split("=")[1];
+
+      if (adsOptOut === "1" || adsOptOut === "0") {
+        // We parsed an actual value for this
+        event.source?.postMessage({ id: "AdsOptOutSyncSuccess", adsOptOut }, event.origin);
+      } else if (document.cookie.length) {
+        // AMC sometimes clears the cookie instead of setting it to 0. If we do still have other cookies available it means the value is 0.
+        event.source?.postMessage({ id: "AdsOptOutSyncSuccess", adsOptOut: "0" }, event.origin);
+      } else {
+        // Likely that access to cookies is disabled and we can't get this value
+        event.source?.postMessage({ id: "AdsOptOutSyncFailure" }, event.origin);
+      }
+    }
+  });
+</script>
+</head><body></body></html>

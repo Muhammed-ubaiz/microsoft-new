@@ -1,0 +1,95 @@
+var SCROLLTHRESHOLD = .01; 
+
+$(document).ready(function() {
+    if ($(window).width() >= 1068) { //Should be 1084, not sure why but this is working.
+        setTimeout(slidingTiles, 1000);
+    }
+window.onresize = function(event) {
+    if ($(window).width() >= 1068) {
+        slidingTiles();
+    }
+}
+
+});
+
+function slidingTiles() {
+    $(".hp-mosaic li.slide").each(function(index) {
+        var currentElement = $(this);
+        var visLoc = visibility(currentElement)[1];
+        var isVisible = currentElement.data("mosaic");
+        if (isVisible === false && visLoc > SCROLLTHRESHOLD) {
+            currentElement.css({ opacity: 0.0, visibility: "visible" }).animate({ opacity: 1.0 });
+            currentElement.css("top", "0px");
+            currentElement.data("mosaic", "true");
+        }
+        $(window).scroll(function() {
+            var visLoc = visibility(currentElement)[1];
+            var isVisible = currentElement.data("mosaic");
+            if (isVisible === false && visLoc > SCROLLTHRESHOLD) {
+                currentElement.css({ opacity: 0.0, visibility: "visible" }).animate({ opacity: 1.0 });
+                currentElement.data("mosaic", "true");
+                currentElement.animate({ top: '0px' });
+            }
+        });
+    });
+}
+
+//This function returns 0 if the element is completely below the viewport, 1 if the element is completely above the viewport, and a decimal value between
+//0 and 1 based on the element's current location in the viewport.
+function visibility(obj) {
+
+    var winw = jQuery(window).width(),
+        winh = jQuery(window).height(),
+        elw = obj.width(),
+        elh = obj.height(),
+        o = obj[0].getBoundingClientRect(),
+        x1 = o.left - winw,
+        x2 = o.left + elw,
+        y1 = o.top - winh,
+        y2 = o.top + elh;
+
+    return [
+        Math.max(0, Math.min((0 - x1) / (x2 - x1), 1)),
+        Math.max(0, Math.min((0 - y1) / (y2 - y1), 1))
+    ];
+}
+
+//This function takes in the value v, and if it is less than min it returns min, and if it is more than max it 
+//returns max. Otherwise, it returns v.
+function valBetween(v, min, max) {
+    return (Math.min(max, Math.max(min, v)));
+}
+
+//This function returns the offset of the element from the top left corner of the page, not the viewport.
+function offset(element) {
+    var rect = element.getBoundingClientRect(),
+        scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
+}
+
+
+// RTL to LTR fix 
+var urlRegion = document.URL.split("/")[3].toLowerCase();
+if ((urlRegion == "ar-ae") || (urlRegion == "ar-sa") || (urlRegion == "he-il")) {
+ $("html").attr("dir", "ltr");
+ $(".uhf-header").attr("dir", "rtl");
+}
+
+    // high contrast detection
+    $(".high-contrast-test").remove(); // gets rid of legacy methods
+    $("body").append('<div class="high-contrast-test" style="color:#999; width:0px; height: 0px; background-color: transparent;"></div>');
+    var rgb = $('.high-contrast-test').css('color').match(/\d+/g);
+    if (rgb[0] > 153) {$('html').addClass('high-contrast-mode white-on-black');}
+    if (rgb[0] < 153) {$('html').addClass('high-contrast-mode black-on-white');}
+
+    // Using existing test div to detect active text spacing plugin. Line height set to 10px in CSS.
+    if (parseFloat($(".high-contrast-test").css("line-height")) > 10) {
+        $("html").addClass("text-spacing");
+    }
+
+    //Mac font fix
+    var userOS = navigator.userAgent;
+    if (userOS.indexOf("Mac") != -1) {
+        $("body").append('<style>@font-face {font-family: "Segoe UI";font-weight: 600;src: local("Segoe UI"), url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/Bold/latest.woff2) format("woff2"), url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/Bold/latest.woff) format("woff"), url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/Bold/latest.ttf) format("ttf")}</style>');
+    }
