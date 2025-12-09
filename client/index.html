@@ -9,70 +9,71 @@
     <title>microsoft</title>
   </head>
   <body>
-    <nav
-      id="mobile-navbar"
-      class="bg-white sm:hidden w-full h-12 flex justify-between items-center"
-    >
-      <div class="flex gap-6 ml-6">
-        <img
-          id="hamburgerMenu"
-          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAPElEQVR4nO3WsQkAMAwDQe2/dALuXIVUBnMHGkDdJwBAOUuWNUcAAOBpulplfGQ8AAC/pvNbxkfGA0CaC2n/KuSsP4fKAAAAAElFTkSuQmCC"
-          class="w-6"
-          alt="menu--v1"
-        />
-        <img
-          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACjUlEQVR4nO2YTYiNYRTHf8JN49uSkiQfYywkKQsWSIoZOxYyO0kpSUYhC0kuKx8bHzspTc3G4mKaxsJCk6TJDPnYXWqmfBRC1xg99ajT6b133Jlz7n3v9P7q2dze+/+/532e5zznOZCRkZEWpgHLgC3ALmArsA6YTQMwHzgEdAPfgdGE8QfoB/LAGlJGE9ABfCnz8pVGd1oC2gF8qPCiH4FBoAiUyjxTAi7F5VgXjgK/1UsNAVfinpihnp8CrAKOA30JAT2My7Om5NVLfAXOALOq0NgJvFA6g7UMpl2Zv4lfejzkgFsJ+8Z9ma0HfgnTJ0Zf8KQK5iLOPBZm74FFhtrXhXbYe804sVudBxuN9XPAgPDowolnwqTTyaNVLbEWa4MWZbAaP54KnwvW4seEeEiZnnQIr+fW4p1C/Dy+NKu9ONNSvF+I78eXqaqcWWspLuupUJp7UxR+odwxY0gIb8Cfl8IvlDJmyPweUqQ3n4TfZkvhXiF8EP/7zagYSy3Frwrh2/iyXVXVYfOb0SbEw7RPx49rwqtgLT4X+CkM9uDDHGBY+BzwMLkhDF47zcpZ4fEZmOfgwQpgRBidcjjRvwn9EzhyWRiNxL1jwYJ40/ynXYzZy40g/kpllYmeKwtVM6JkfZonETojPSrPh5k5Pc49syneNKXeYWoQRKFCD+stsPc/AwpNua4EjXP1CKJHLTOZbe7E9mlrrM22xe5Lvsx/fgD76hFEIf7eFBOAzGbVjkfWpXq1QUiWxy6IPDTHGn3Wle1Eg9Anc1tsm/bGa/FwTKfh2noXOAKspEaE1sw9FcT9MYJIHbnJGsSDLIg6kMtmIkXcrDLFppbFwLtG3diaJXFmGjqIjIyMScZfagBKIrdyoEkAAAAASUVORK5CYII="
-          class="w-6"
-          alt="search--v1"
-        />
-      </div>
+   <!-- 🌐 Mobile Navbar -->
+<nav
+  id="mobile-navbar"
+  class="bg-white sm:hidden w-full h-14 flex justify-between items-center px-4 shadow-md fixed top-0 left-0 z-50"
+>
+  <!-- Left: Hamburger & Search -->
+  <div class="flex items-center gap-5">
+    <img
+      id="hamburgerMenu"
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAPElEQVR4nO3WsQkAMAwDQe2/dALuXIVUBnMHGkDdJwBAOUuWNUcAAOBpulplfGQ8AAC/pvNbxkfGA0CaC2n/KuSsP4fKAAAAAElFTkSuQmCC"
+      class="w-6 cursor-pointer"
+      alt="Menu"
+    />
+    <img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACjUlEQVR4nO2YTYiNYRTHf8JN49uSkiQfYywkKQsWSIoZOxYyO0kpSUYhC0kuKx8bHzspTc3G4mKaxsJCk6TJDPnYXWqmfBRC1xg99ajT6b133Jlz7n3v9P7q2dze+/+/532e5zznOZCRkZEWpgHLgC3ALmArsA6YTQMwHzgEdAPfgdGE8QfoB/LAGlJGE9ABfCnz8pVGd1oC2gF8qPCiH4FBoAiUyjxTAi7F5VgXjgK/1UsNAVfinpihnp8CrAKOA30JAT2My7Om5NVLfAXOALOq0NgJvFA6g7UMpl2Zv4lfejzkgFsJ+8Z9ma0HfgnTJ0Zf8KQK5iLOPBZm74FFhtrXhXbYe804sVudBxuN9XPAgPDowolnwqTTyaNVLbEWa4MWZbAaP54KnwvW4seEeEiZnnQIr+fW4p1C/Dy+NKu9ONNSvF+I78eXqaqcWWspLuupUJp7UxR+odwxY0gIb8Cfl8IvlDJmyPweUqQ3n4TfZkvhXiF8EP/7zagYSy3Frwrh2/iyXVXVYfOb0SbEw7RPx49rwqtgLT4X+CkM9uDDHGBY+BzwMLkhDF47zcpZ4fEZmOfgwQpgRBidcjjRvwn9EzhyWRiNxL1jwYJ40/ynXYzZy40g/kpllYmeKwtVM6JkfZonETojPSrPh5k5Pc49syneNKXeYWoQRKFCD+stsPc/AwpNua4EjXP1CKJHLTOZbe7E9mlrrM22xe5Lvsx/fgD76hFEIf7eFBOAzGbVjkfWpXq1QUiWxy6IPDTHGn3Wle1Eg9Anc1tsm/bGa/FwTKfh2noXOAKspEaE1sw9FcT9MYJIHbnJGsSDLIg6kMtmIkXcrDLFppbFwLtG3diaJXFmGjqIjIyMScZfagBKIrdyoEkAAAAASUVORK5CYII="
+      class="w-6 cursor-pointer"
+      alt="Search"
+    />
+  </div>
 
-      <img src="./image/UHFbanner-MSlogo.png" class="w-[28%]" alt="" />
-      <div class="flex gap-6 mr-6">
-        <img
-          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACUElEQVR4nO2ZPWtUQRSGn9WAEsS0foUQNRo/QCTY5A8YCaKVnaCSqBERCQh2VoKNjQgWFhqMJhJEghEri5hSrGwUAgG/BRcNgkXErBx4L1wk7JJ1ztw7kAem2b3znvMus3PPmYEVykc/8AGo1RnfgRfACaBCSfnYwMS/Y7SsZt7nkny3xPeW9CZgEPip545TQg7JjJnoa/DsaRl5ReKsAb7JzC4SZ1RGhkicQRkZJ3F2yMjXsu5ezWzZ3STOAxk5S+KckZExEqdbRj6v/E9KxPgyazSPMRPCyFAJjMyGMLI79z+JzV3FvhJCzF6GXyS4k3isUxW+CGwNJTohI1YVx+KUYj4PKXpeoveJx4xHT7RXop+IQ5eW1DzQGlK4ouKxpiDeXFWs2x7ijyQ+gC+r1MVarF6PABckfg9fDirOW6+yaJ8CWN8fo5K47BWgkuvjtznFaAN+AX+Adhx5LCO2x3twTvrPcOaiAo046b+U/jGc2V/ngO9/2SPtKrCWCFtjVQE7A2tfl+5NIjGpgHbQHYoWVdem20MkhhXwTkDNI9J8TUR6FHTOYTccJiKrdY8Sugv8DWwgMk8Cm1gEblAAl5TALRLngIy8IXFa1PTUdMuVNJMycpLEGZCRaRJnfa5cuQZ0aGtOkqPAQsBteLpIM4cDGlkANhZlZERJ2Etys8ZUg3uVsTpz7BK2ELKq1ZLJaM/1FktRrTPnBwWRvU+2LCOp+SbmuJOdd00pMRtP9dlEwDlRrrGz05X8sOWzPeAcYmBr/aGWjA37VRsl1Mwc/gIXmFSH9pqNAQAAAABJRU5ErkJggg=="
-          class="w-6"
-          alt="shopping-cart--v1"
-        />
-        <img
-          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAABwUlEQVR4nO2WyUoDQRCGPxU0KGrO5qoXiQcPPocbKD6ASVziybfw5PIM6iN4ElRccYkgqCfNTbxEVBRUjDT8A01wkplkOir4QUHorvq7pru6OvDPH6QFyAIHwLNsH5gFml0vngByQNHHToEul1+e00KXwCDQLhsCrjR34mon5qzF49/Mx60kZlwkcChx8+V+jMjH1ETkPEncbLkfHfJ5/KkEOl0mcCBxU3CVjmDPRQJZiV+VKcJr+Uy7uoZnVhLDOvMOfbm3+LHLhpRQs/FrRCcuG5FHs+75ngrT2K623Xkr/nU0yepCj7Z5DTi3+kJRv83YKjAFdEdZ+WngyKfoPmTfzZmYVC11MQrkLcECsC7RgZJeENdYWj4FKy6vaxqKBUvAPMETQCxEfEwx55aO0QxESgGvQAZooHoaVROv0pwMEnQr5zGiY1yaN0GcX+TcGmECbdI02oFfvakAvruySmTC/FEZkvM7sAT0lfH9lK9fnfQDK9Iq6gELxLwVZGyjigQ2rfg3aYYiCSwD97qKHtvAA3BhLXChMTPnYcbugEWglxpoKOn3O2WeYzNXFzq1Q94RJDVWdz4rFKFztkrOPTRf7JOmc1YC3sEAAAAASUVORK5CYII="
-          class="w-6"
-          alt="add-user-male--v2"
-        />
-      </div>
-    </nav>
-    <div id="menuBar" class="pl-4 hidden sm:hidden absolute bg-white w-full">
-      <ul class="space-y-6 mt-7">
-        <a href="Microsoft 365"><li>Microsoft 365</li></a>
-        <hr />
-        <a href="Teams"><li>Teams</li></a>
-        <hr />
-        <a href="Copilot"><li>Copilot</li></a>
-        <hr />
-        <a href="Windows"><li>Windows</li></a>
-        <hr />
-        <a href="Surface"><li>Surface</li></a>
-        <hr />
-        <a href="src/pages/xbox.html"><li>Xbox</li></a>
-        <hr />
-        <a href="Support"><li>Support</li></a>
-        <hr />
-        <a href="Software"><li>Software</li></a>
-        <hr />
-        <a href="PCs & Devices"><li>PCs & Devices</li></a>
-        <hr />
-        <a href="Entertainment"><li>Entertainment</li></a>
-        <hr />
-        <a href="Business"><li>Business</li></a>
-        <hr />
-        <a href="Developer & IT"><li>Developer & IT</li></a>
-        <hr />
-        <a href="Other"><li>Other</li></a>
-        <hr />
-        <a href="View Sitemap"><li>View Sitemap</li></a>
-        <hr />
-      </ul>
-    </div>
+  <!-- Center: Logo -->
+  <img
+    src="./image/UHFbanner-MSlogo.png"
+    class="w-28 sm:w-32 mx-auto"
+    alt="Microsoft Logo"
+  />
+
+  <!-- Right: Cart & User -->
+  <div class="flex items-center gap-5">
+    <img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACUElEQVR4nO2ZPWtUQRSGn9WAEsS0foUQNRo/QCTY5A8YCaKVnaCSqBERCQh2VoKNjQgWFhqMJhJEghEri5hSrGwUAgG/BRcNgkXErBx4L1wk7JJ1ztw7kAem2b3znvMus3PPmYEVykc/8AGo1RnfgRfACaBCSfnYwMS/Y7SsZt7nkny3xPeW9CZgEPip545TQg7JjJnoa/DsaRl5ReKsAb7JzC4SZ1RGhkicQRkZJ3F2yMjXsu5ezWzZ3STOAxk5S+KckZExEqdbRj6v/E9KxPgyazSPMRPCyFAJjMyGMLI79z+JzV3FvhJCzF6GXyS4k3isUxW+CGwNJTohI1YVx+KUYj4PKXpeoveJx4xHT7RXop+IQ5eW1DzQGlK4ouKxpiDeXFWs2x7ijyQ+gC+r1MVarF6PABckfg9fDirOW6+yaJ8CWN8fo5K47BWgkuvjtznFaAN+AX+Adhx5LCO2x3twTvrPcOaiAo046b+U/jGc2V/ngO9/2SPtKrCWCFtjVQE7A2tfl+5NIjGpgHbQHYoWVdem20MkhhXwTkDNI9J8TUR6FHTOYTccJiKrdY8Sugv8DWwgMk8Cm1gEblAAl5TALRLngIy8IXFa1PTUdMuVNJMycpLEGZCRaRJnfa5cuQZ0aGtOkqPAQsBteLpIM4cDGlkANhZlZERJ2Etys8ZUg3uVsTpz7BK2ELKq1ZLJaM/1FktRrTPnBwWRvU+2LCOp+SbmuJOdd00pMRtP9dlEwDlRrrGz05X8sOWzPeAcYmBr/aGWjA37VRsl1Mwc/gIXmFSH9pqNAQAAAABJRU5ErkJggg=="
+      class="w-6 cursor-pointer"
+      alt="Cart"
+    />
+    <img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAABwUlEQVR4nO2WyUoDQRCGPxU0KGrO5qoXiQcPPocbKD6ASVziybfw5PIM6iN4ElRccYkgqCfNTbxEVBRUjDT8A01wkplkOir4QUHorvq7pru6OvDPH6QFyAIHwLNsH5gFml0vngByQNHHToEul1+e00KXwCDQLhsCrjR34mon5qzF49/Mx60kZlwkcChx8+V+jMjH1ETkPEncbLkfHfJ5/KkEOl0mcCBxU3CVjmDPRQJZiV+VKcJr+Uy7uoZnVhLDOvMOfbm3+LHLhpRQs/FrRCcuG5FHs+75ngrT2K623Xkr/nU0yepCj7Z5DTi3+kJRv83YKjAFdEdZ+WngyKfoPmTfzZmYVC11MQrkLcECsC7RgZJeENdYWj4FKy6vaxqKBUvAPMETQCxEfEwx55aO0QxESgGvQAZooHoaVROv0pwMEnQr5zGiY1yaN0GcX+TcGmECbdI02oFfvakAvruySmTC/FEZkvM7sAT0lfH9lK9fnfQDK9Iq6gELxLwVZGyjigQ2rfg3aYYiCSwD97qKHtvAA3BhLXChMTPnYcbugEWglxpoKOn3O2WeYzNXFzq1Q94RJDVWdz4rFKFztkrOPTRf7JOmc1YC3sEAAAAASUVORK5CYII="
+      class="w-6 cursor-pointer"
+      alt="User"
+    />
+  </div>
+</nav>
+
+    <!-- 📱 Mobile Dropdown Menu -->
+<div
+  id="menuBar"
+  class="hidden sm:hidden absolute top-14 left-0 bg-white w-full shadow-md z-40 border-t border-gray-200 transition-all duration-300 ease-in-out"
+>
+  <ul class="flex flex-col py-4">
+    <li><a href="#" class="block px-6 py-3 hover:bg-gray-100 text-gray-800 font-medium">Microsoft 365</a></li>
+    <li><a href="#" class="block px-6 py-3 hover:bg-gray-100 text-gray-800 font-medium">Teams</a></li>
+    <li><a href="#" class="block px-6 py-3 hover:bg-gray-100 text-gray-800 font-medium">Copilot</a></li>
+    <li><a href="#" class="block px-6 py-3 hover:bg-gray-100 text-gray-800 font-medium">Windows</a></li>
+    <li><a href="#" class="block px-6 py-3 hover:bg-gray-100 text-gray-800 font-medium">Surface</a></li>
+    <li><a href="src/pages/xbox.html" class="block px-6 py-3 hover:bg-gray-100 text-gray-800 font-medium">Xbox</a></li>
+    <li><a href="#" class="block px-6 py-3 hover:bg-gray-100 text-gray-800 font-medium">Support</a></li>
+    <li><a href="#" class="block px-6 py-3 hover:bg-gray-100 text-gray-800 font-medium">Software</a></li>
+    <li><a href="#" class="block px-6 py-3 hover:bg-gray-100 text-gray-800 font-medium">PCs & Devices</a></li>
+    <li><a href="#" class="block px-6 py-3 hover:bg-gray-100 text-gray-800 font-medium">Entertainment</a></li>
+    <li><a href="#" class="block px-6 py-3 hover:bg-gray-100 text-gray-800 font-medium">Business</a></li>
+    <li><a href="#" class="block px-6 py-3 hover:bg-gray-100 text-gray-800 font-medium">Developer & IT</a></li>
+    <li><a href="#" class="block px-6 py-3 hover:bg-gray-100 text-gray-800 font-medium">Other</a></li>
+    <li><a href="#" class="block px-6 py-3 hover:bg-gray-100 text-gray-800 font-medium">View Sitemap</a></li>
+  </ul>
+</div>
+
     <nav
       class="w-full bg-white py-5 pl-24 flex-row justify-between hidden md:flex"
     >
